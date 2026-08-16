@@ -1,0 +1,36 @@
+{
+  "name": "punto-retiro",
+  "version": "0.2.0",
+  "description": "Sistema de gestion de paquetes para punto de retiro",
+  "main": "./out/main/index.js",
+  "author": "Punto de Retiro",
+  "private": true,
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build": "electron-vite build",
+    "start": "electron-vite preview",
+    "postinstall": "electron-builder install-app-deps",
+    "dist": "electron-vite build && electron-builder --win --config electron-builder.yml",
+    "typecheck": "tsc --noEmit -p tsconfig.node.json && tsc --noEmit -p tsconfig.web.json",
+    "icono": "electron herramientas/generar-icono.js",
+    "manual": "electron herramientas/generar-manual.js",
+    "datos-prueba": "set ELECTRON_RUN_AS_NODE=1&& electron herramientas/datos-prueba.js",
+    "borrar-prueba": "set ELECTRON_RUN_AS_NODE=1&& electron herramientas/datos-prueba.js --borrar"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.5.0"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.11",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.3",
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8",
+    "electron-vite": "^2.3.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.11"
+  }
+}

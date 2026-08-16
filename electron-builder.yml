@@ -1,0 +1,43 @@
+appId: com.puntoretiro.app
+productName: Punto de Retiro
+directories:
+  buildResources: build
+  output: release
+
+files:
+  - out/**
+  - package.json
+  # Del modulo de SQLite solo hace falta el binario ya compilado. El codigo
+  # fuente en C y los restos de compilacion son 9 MB que no se usan en el local
+  # y que el antivirus escanea igual la primera vez que se abre el programa.
+  - '!node_modules/better-sqlite3/deps/**'
+  - '!node_modules/better-sqlite3/src/**'
+  - '!node_modules/better-sqlite3/build/Release/obj/**'
+  - '!node_modules/better-sqlite3/build/Release/*.pdb'
+  - '!node_modules/better-sqlite3/build/Release/*.exp'
+  - '!node_modules/better-sqlite3/build/Release/*.lib'
+  - '!node_modules/better-sqlite3/build/*.vcxproj*'
+  - '!node_modules/better-sqlite3/build/*.sln'
+
+asarUnpack:
+  - '**/*.node'
+
+# Saca los 40 MB de idiomas de Chromium que no se usan.
+afterPack: herramientas/afterpack-limpiar.js
+
+win:
+  target:
+    - target: nsis
+      arch: [x64]
+  icon: build/icon.ico
+
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  shortcutName: Punto de Retiro
+  # No abrir la aplicacion apenas termina de instalar: en ese momento Windows
+  # todavia esta escaneando los archivos recien copiados, y arrancar ahi es lo
+  # que hacia que la ventana tardara y se viera como colgada. Se abre desde el
+  # acceso directo unos segundos despues, y arranca al instante.
+  runAfterFinish: false

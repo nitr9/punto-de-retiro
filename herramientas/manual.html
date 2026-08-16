@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<title>Punto de Retiro — Manual de uso</title>
+<style>
+  :root {
+    --texto: #141c28;
+    --suave: #56657a;
+    --borde: #d5dce6;
+    --primario: #1a5fc4;
+    --primario-suave: #e8f0fc;
+    --exito: #146b45;
+    --exito-suave: #e4f4ec;
+    --alerta: #93590f;
+    --alerta-suave: #fdf2df;
+    --peligro: #a81f18;
+    --peligro-suave: #fceceb;
+  }
+
+  /* Los margenes del PDF los pone printToPDF (ver generar-manual.js): Chromium
+     ignora el margen de @page al imprimir por ahi. Esta regla es para cuando se
+     abre el HTML en el navegador y se imprime con Ctrl+P. */
+  @page { size: A4; margin: 16mm; }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0 auto;
+    max-width: 178mm;
+    padding: 0;
+    font-family: "Segoe UI", Calibri, system-ui, sans-serif;
+    font-size: 11pt;
+    line-height: 1.45;
+    color: var(--texto);
+    background: #fff;
+  }
+
+  /* Leerlo en pantalla, si alguien abre el HTML en vez del PDF. */
+  @media screen {
+    body { padding: 26px 24px 60px; max-width: 205mm; }
+  }
+
+  /* --- Portada / encabezado --- */
+  .tapa { border-bottom: 3px solid var(--primario); padding-bottom: 8px; margin-bottom: 16px; }
+  .tapa h1 { margin: 0; font-size: 23pt; letter-spacing: -0.4px; }
+  .tapa .bajada { margin: 5px 0 0; color: var(--suave); font-size: 11.5pt; }
+
+  h2 {
+    font-size: 14.5pt;
+    margin: 20px 0 8px;
+    padding-top: 10px;
+    border-top: 1px solid var(--borde);
+    page-break-after: avoid;
+  }
+  h3 {
+    font-size: 12.5pt;
+    margin: 15px 0 5px;
+    color: var(--primario);
+    page-break-after: avoid;
+  }
+  p { margin: 7px 0; page-break-inside: avoid; }
+  ol, ul { margin: 7px 0; padding-left: 22px; }
+  li { margin: 4px 0; }
+  strong { font-weight: 600; }
+  code {
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 0.92em;
+    background: #eef1f6;
+    border: 1px solid var(--borde);
+    border-radius: 3px;
+    padding: 0 4px;
+  }
+
+  /* --- Tecla de función --- */
+  .tecla {
+    display: inline-block;
+    font-family: Consolas, monospace;
+    font-size: 0.85em;
+    font-weight: 700;
+    background: #16202e;
+    color: #fff;
+    border-radius: 4px;
+    padding: 1px 7px;
+    vertical-align: 1px;
+  }
+
+  /* --- Mapa de pantallas --- */
+  .mapa {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin: 14px 0 4px;
+  }
+  .mapa div {
+    border: 1px solid var(--borde);
+    border-top: 3px solid var(--primario);
+    border-radius: 5px;
+    padding: 8px 10px;
+    background: #f7f9fc;
+  }
+  .mapa b { display: block; font-size: 10.5pt; }
+  .mapa span { font-size: 9.5pt; color: var(--suave); }
+
+  /* --- Avisos --- */
+  .aviso {
+    border-left: 4px solid var(--primario);
+    background: var(--primario-suave);
+    padding: 9px 13px;
+    margin: 12px 0;
+    border-radius: 0 5px 5px 0;
+    page-break-inside: avoid;
+  }
+  .aviso.ojo { border-left-color: var(--alerta); background: var(--alerta-suave); }
+  .aviso p { margin: 4px 0; }
+  .aviso .titulo { font-weight: 700; }
+
+  /* --- Semáforo --- */
+  table.semaforo { border-collapse: collapse; width: 100%; margin: 10px 0; }
+  table.semaforo td { border: 1px solid var(--borde); padding: 8px 12px; vertical-align: middle; }
+  table.semaforo td:first-child { width: 130px; font-weight: 700; }
+  .verde   { background: var(--exito-suave);   color: var(--exito); }
+  .amarillo{ background: var(--alerta-suave);  color: var(--alerta); }
+  .rojo    { background: var(--peligro-suave); color: var(--peligro); }
+
+  /* --- Preguntas frecuentes --- */
+  /* La pregunta nunca al pie de una hoja y la respuesta en la siguiente. */
+  .pregunta { font-weight: 700; margin: 12px 0 2px; page-break-after: avoid; }
+  .pregunta + p { margin-top: 0; }
+
+  section { page-break-inside: auto; }
+  .juntos { page-break-inside: avoid; }
+</style>
+</head>
+<body>
+
+<div class="tapa">
+  <h1>Punto de Retiro</h1>
+  <p class="bajada">Manual de uso — guía para el local. No hace falta saber nada de computación.</p>
+</div>
+
+<section class="juntos">
+  <h2>1. Instalación</h2>
+  <ol>
+    <li>Copiar el archivo <code>Punto de Retiro Setup.exe</code> a la computadora del local
+        (por pendrive o como sea más cómodo).</li>
+    <li>Hacer doble clic.</li>
+    <li><strong>Va a aparecer una advertencia azul de Windows</strong> que dice “Windows protegió tu PC”.
+        Es normal: aparece con todo programa que no está firmado por una empresa registrada.
+        Hay que tocar <strong>“Más información”</strong> (el texto chico) y después
+        <strong>“Ejecutar de todas formas”</strong>.</li>
+    <li>Seguir la instalación. Al terminar queda el acceso directo en el escritorio.</li>
+  </ol>
+  <p>Se instala una sola vez y <strong>no pide contraseña de administrador</strong>. Después se abre
+     como cualquier programa y la advertencia no vuelve a aparecer.</p>
+
+  <div class="aviso ojo">
+    <p class="titulo">Si Windows lo bloquea sin dejar continuar</p>
+    <p>Algunas computadoras con Windows 11 tienen activado el <strong>“Control de aplicaciones
+       inteligente”</strong>, que bloquea sin ofrecer la opción de seguir. Se apaga en
+       <em>Seguridad de Windows → Control de aplicaciones y explorador</em>.</p>
+    <p><strong>Atención:</strong> una vez apagado, Windows no permite volver a encenderlo sin
+       reinstalar el sistema. Usarlo solo si no hay otra forma.</p>
+    <p>Si el bloqueo viene de un antivirus de terceros, alcanza con agregar la carpeta del
+       programa como excepción.</p>
+  </div>
+</section>
+
+<section>
+  <h2>2. El día a día</h2>
+  <p>La aplicación tiene cuatro pantallas. Se cambia entre ellas con las teclas
+     <span class="tecla">F1</span> <span class="tecla">F2</span> <span class="tecla">F3</span>
+     <span class="tecla">F4</span>, o haciendo clic en el menú de la izquierda.</p>
+
+  <div class="mapa">
+    <div><b>F1 · Entregar</b><span>Cuando viene el cliente</span></div>
+    <div><b>F2 · Recibir</b><span>Cuando llega el camión</span></div>
+    <div><b>F3 · Stock</b><span>Qué hay guardado</span></div>
+    <div><b>F4 · Configuración</b><span>Plazos y ajustes</span></div>
+  </div>
+
+  <!-- Cada instructivo entero en la misma hoja: leerlo con el paso 3 dado vuelta
+       es justo lo que hace que nadie lo lea. -->
+  <div class="juntos">
+  <h3>Cuando llega el camión — Recibir paquetes <span class="tecla">F2</span></h3>
+  <ol>
+    <li>Tocar <strong>Empezar a recibir</strong>. Si el remito dice cuántos paquetes vienen,
+        cargarlo en <strong>Paquetes declarados</strong>: así la aplicación avisa si al final falta
+        alguno.</li>
+    <li>Si usan estantes, escribir en <strong>Ubicación en el depósito</strong> dónde se van a
+        guardar (por ejemplo <code>A-1</code>). Queda fijo: no hay que volver a escribirlo en cada
+        paquete. Si los paquetes se apilan sin un lugar fijo, este campo se puede sacar (ver
+        Configuración).</li>
+    <li>Por cada paquete: escribir el <strong>código</strong> y el <strong>nombre</strong>, y apretar
+        <strong>Enter</strong>. El cursor vuelve solo al código, listo para el siguiente.</li>
+    <li>Teléfono y DNI son opcionales. Si el paquete vino golpeado o mojado, anotarlo en
+        <strong>Observaciones</strong>: eso se muestra bien visible el día que el cliente lo retire.</li>
+    <li>Al terminar, tocar <strong>Cerrar recepción</strong>.</li>
+  </ol>
+  <div class="aviso">
+    <p>Si se escanea dos veces el mismo paquete, la aplicación avisa y dice en qué estante está el
+       que ya se había cargado. No se duplica.</p>
+  </div>
+
+  </div>
+
+  <div class="juntos">
+  <h3>Cuando viene el cliente — Entregar paquete <span class="tecla">F1</span></h3>
+  <ol>
+    <li>Escribir el código, el nombre, el DNI o el teléfono, y apretar Enter.</li>
+    <li>Aparece la ficha con los datos del paquete y, si usan estantes,
+        <strong>dónde está guardado</strong>, en letra grande.</li>
+    <li>Ir a buscarlo, escanearlo con el teléfono en la aplicación de Mercado Libre como siempre,
+        y después tocar <strong>Entregar paquete</strong>.</li>
+  </ol>
+  <p>Si lo retira otra persona (un familiar, un vecino), cambiar el nombre antes de confirmar.
+     Queda registrado quién se lo llevó.</p>
+  <p><strong>Atajo:</strong> si ya sabés cuál es, en <strong>Paquetes en stock</strong>
+     <span class="tecla">F3</span> cada fila tiene un botón verde <strong>“Entregado”</strong>.
+     Un clic y listo.</p>
+
+  </div>
+
+  <div class="juntos">
+  <h3>Para controlar — Paquetes en stock <span class="tecla">F3</span></h3>
+  <p>Muestra todo lo que hay guardado. Los colores son la clave:</p>
+  <table class="semaforo">
+    <tr><td class="verde">Verde</td><td>Tiene tiempo de sobra</td></tr>
+    <tr><td class="amarillo">Amarillo</td><td>Vence hoy o mañana — conviene llamar al cliente</td></tr>
+    <tr><td class="rojo">Rojo</td><td>Ya venció — hay que devolverlo a Mercado Libre</td></tr>
+  </table>
+  <p>Para devolver: tildar los que correspondan y tocar el botón rojo
+     <strong>“Marcar … como devuelto a Mercado Libre”</strong>, que aparece al tildar el primero.</p>
+  <p>El botón <strong>“Lo que entró hoy”</strong> arma la lista del día, como la hoja de Excel de antes.</p>
+
+  </div>
+
+  <div class="juntos">
+  <h3>Ajustes — Configuración <span class="tecla">F4</span></h3>
+  <ul>
+    <li><strong>Días de plazo por defecto</strong>: con cuántos días se calcula la fecha límite al
+        recibir. Si Mercado Libre cambia el plazo, se cambia acá y listo. Igual, en cada paquete se
+        puede poner otra fecha a mano.</li>
+    <li><strong>Avisar cuántos días antes de vencer</strong>: cuándo empiezan a ponerse amarillos.</li>
+    <li><strong>“Guardamos los paquetes en estantes identificados”</strong>: si los apilan sin un
+        lugar fijo, <strong>destildar</strong>. Desaparece el campo de ubicación de todas las
+        pantallas y la aplicación deja de avisar que faltan ubicaciones.</li>
+    <li><strong>Ubicaciones del depósito</strong>: los estantes, separados por coma. Solo aparece si
+        la opción de arriba está tildada.</li>
+    <li><strong>Operadores</strong>: quiénes atienden. Queda registrado quién recibió y quién entregó
+        cada paquete. No se borran, se desactivan, para no perder ese historial.</li>
+  </ul>
+  <p>Después de cambiar algo, tocar <strong>Guardar configuración</strong>.</p>
+  </div>
+</section>
+
+<section class="juntos">
+  <h2>3. Copias de seguridad — importante</h2>
+  <p>La aplicación guarda una copia sola, todos los días, y conserva las últimas 30. El problema es
+     que quedan en el mismo disco: si esa computadora se rompe o se la roban, se van los datos y las
+     copias juntos.</p>
+  <p><strong>Por eso conviene hacer esto una sola vez:</strong> en
+     <strong>Configuración</strong> <span class="tecla">F4</span>, en
+     <strong>“Segunda carpeta para la copia diaria”</strong>, elegir un pendrive que quede siempre
+     enchufado (o una carpeta de red) con el botón <strong>Elegir…</strong>. Desde ahí, la copia de
+     cada día se guarda también ahí sola, sin que nadie se acuerde de hacerla.</p>
+  <p>Si el pendrive no está conectado ese día, no pasa nada: la copia local se hace igual, y la
+     aplicación avisa en esa misma pantalla si la copia de afuera quedó atrasada.</p>
+  <p>Para llevarse una copia en el momento —por ejemplo, antes de cambiar de computadora— está el
+     botón <strong>“Guardar copia ahora en otra carpeta”</strong>, abajo de todo en la misma
+     pantalla.</p>
+</section>
+
+<section>
+  <h2>4. Preguntas frecuentes</h2>
+
+  <p class="pregunta">¿Necesito internet?</p>
+  <p>No. Funciona sin conexión.</p>
+
+  <p class="pregunta">¿Reemplaza a la aplicación de Mercado Libre?</p>
+  <p>No. Hay que seguir escaneando con el teléfono en Mercado Libre igual que siempre. Esta
+     aplicación es el control propio del local: dónde está cada paquete, qué hay que devolver y
+     quién atendió cada operación.</p>
+
+  <p class="pregunta">¿Sirve un lector de código de barras?</p>
+  <p>Sí, y conviene mucho. Se enchufa por USB y funciona sin instalar nada: al escanear, es como si
+     alguien tipeara el código y apretara Enter. Cuesta alrededor de 20 dólares y evita los errores
+     de copiar códigos largos a mano.</p>
+
+  <p class="pregunta">Me equivoqué al cargar un paquete.</p>
+  <p>En <strong>Paquetes en stock</strong> <span class="tecla">F3</span>, botón
+     <strong>“Ver / editar”</strong> de esa fila. Se puede corregir todo, y queda registrado el
+     cambio en el historial del paquete.</p>
+</section>
+
+</body>
+</html>

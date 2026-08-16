@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-ChildItem *)",
+      "Bash(Get-ChildItem *)",
+      "PowerShell(Get-Process *)",
+      "Bash(Get-Process *)",
+      "PowerShell(Get-Content *)",
+      "Bash(Get-Content *)",
+      "PowerShell(Set-Location *)",
+      "Bash(Set-Location *)",
+      "PowerShell(nslookup *)",
+      "Bash(nslookup *)",
+      "PowerShell(npm run typecheck)",
+      "Bash(npm run typecheck)"
+    ]
+  }
+}

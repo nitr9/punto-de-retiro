@@ -37,10 +37,16 @@ registrado quién se lo llevó.
 ![Pantalla de entrega: ficha del paquete con la ubicación](docs/screenshots/entregar-2.png)
 
 ### Stock
-Semáforo por vencimiento con lo que vence primero arriba, calendario mensual de entradas y
-salidas, y devolución masiva a Mercado Libre.
+Semáforo por vencimiento, con lo que vence primero arriba. Cada fila tiene un botón verde
+para marcar la entrega en un clic, y los vencidos se devuelven a Mercado Libre en tanda.
 
-![Pantalla de stock con semáforo de vencimientos](docs/screenshots/stock.png)
+![Pantalla de stock con semáforo de vencimientos](docs/screenshots/stock-1.png)
+
+El calendario mensual muestra cuántos paquetes entraron y salieron cada día, y permite
+entrar a un día con un clic. Reemplaza la carpeta de planillas de Excel, que era una hoja
+por fecha.
+
+![Calendario mensual de entradas y salidas](docs/screenshots/stock-2.png)
 
 ---
 

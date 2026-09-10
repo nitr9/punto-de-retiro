@@ -14,10 +14,15 @@ vencimiento.
 ## Capturas
 
 ### Recibir paquetes
-Escaneo continuo por lote. La ubicación y la fecha quedan fijas entre paquetes, el cursor
+Se abre un lote por cada llegada de camión. Si el remito declara cuántos paquetes vienen,
+la aplicación avisa al cerrar si falta alguno.
+
+![Pantalla de recepción: apertura del lote](docs/screenshots/recibir-1.png)
+
+El escaneo es continuo: la ubicación y la fecha quedan fijas entre paquetes, el cursor
 vuelve solo al código, y avisa si un paquete está duplicado.
 
-![Pantalla de recepción de paquetes](docs/screenshots/recibir.png)
+![Pantalla de recepción: escaneo continuo de paquetes](docs/screenshots/recibir-2.png)
 
 ### Entregar paquete
 Busca por código, nombre, DNI o teléfono. Muestra en letra grande dónde está guardado el

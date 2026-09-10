@@ -25,10 +25,16 @@ vuelve solo al código, y avisa si un paquete está duplicado.
 ![Pantalla de recepción: escaneo continuo de paquetes](docs/screenshots/recibir-2.png)
 
 ### Entregar paquete
-Busca por código, nombre, DNI o teléfono. Muestra en letra grande dónde está guardado el
-paquete, antes de ir a buscarlo al depósito.
+La búsqueda acepta código, nombre, DNI o teléfono: sirve tanto si el cliente trae el código
+como si solo dice su nombre.
 
-![Pantalla de entrega de paquetes](docs/screenshots/entregar.png)
+![Pantalla de entrega: búsqueda del paquete](docs/screenshots/entregar-1.png)
+
+Encontrado el paquete, muestra la ficha con **dónde está guardado en letra grande**, antes
+de ir a buscarlo al depósito. Si lo retira un tercero, se cambia el nombre y queda
+registrado quién se lo llevó.
+
+![Pantalla de entrega: ficha del paquete con la ubicación](docs/screenshots/entregar-2.png)
 
 ### Stock
 Semáforo por vencimiento con lo que vence primero arriba, calendario mensual de entradas y
